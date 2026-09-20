@@ -13,4 +13,9 @@ The source of truth for both texts is `docs/STORE_LISTING.md` in the game's own 
 fact about the app changes, it changes there first and is copied here. A privacy answer that
 under-declares is a resubmission.
 
-Contact: jthompson785@gmail.com
+## The support address
+
+The pages assemble it in the browser (`contact.js`) instead of writing it into the HTML, so a
+harvester that regexes the source for `mailto:` finds nothing. One that runs a real browser is not
+fooled for a moment. Treat the address as disposable rather than hidden: if it starts drawing spam,
+change it here and in App Store Connect and the old one stops mattering.
