@@ -1,0 +1,63 @@
+/* The colours are the game's own, from src/core/palette.js — FRAME0 is the bezel the console is
+   drawn in and the app's launch background, LIGHT is its text, HOS1 the hostile diamond's red.
+   Kept in one file so the three pages cannot drift apart. */
+:root {
+  --frame0: #0b0c10; --frame1: #16181e; --frame2: #23262e; --frame4: #4a4f5c;
+  --frame6: #8c93a3; --frame7: #b8bfcf;
+  --light: #d8dde8; --grn3: #3ee06a; --amb3: #ffc24a; --hos1: #d8202f;
+  --sea1: #0a1727;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  padding: 0 16px 96px;
+  background: var(--frame0);
+  color: var(--light);
+  font: 16px/1.65 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+.wrap { max-width: 46rem; margin: 0 auto; }
+
+header { border-bottom: 1px solid var(--frame2); padding: 40px 0 20px; margin-bottom: 40px; }
+.mark { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.mark svg { flex: none; }
+.title { font-size: 1.05rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.sub { color: var(--frame6); font-size: 0.8rem; letter-spacing: 0.08em; margin-top: 2px; }
+
+h1 { font-size: 1.35rem; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 6px; }
+h2 {
+  font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amb3); margin: 40px 0 10px;
+}
+.asof { color: var(--frame6); font-size: 0.8rem; margin: 0 0 36px; }
+p { margin: 0 0 16px; }
+strong { color: #fff; font-weight: 600; }
+a { color: var(--grn3); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: #a8ffc4; }
+code {
+  background: var(--frame1); border: 1px solid var(--frame2); border-radius: 3px;
+  padding: 1px 5px; font-size: 0.9em; color: var(--frame7);
+}
+ul { padding-left: 1.1rem; margin: 0 0 16px; }
+li { margin-bottom: 7px; }
+
+/* a question and its answer, which is what the support page is made of */
+.q { border-left: 2px solid var(--frame4); padding-left: 16px; margin: 0 0 26px; }
+.q > p:first-child { color: #fff; margin-bottom: 6px; }
+.q > p:last-child { margin-bottom: 0; }
+
+.nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 36px 0 0; }
+.nav a {
+  border: 1px solid var(--frame2); background: var(--frame1); border-radius: 4px;
+  padding: 11px 18px; text-decoration: none; color: var(--light);
+  font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.nav a:hover { border-color: var(--frame4); background: var(--frame2); color: #fff; }
+
+footer {
+  margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--frame2);
+  color: var(--frame6); font-size: 0.78rem;
+}
+footer a { color: var(--frame6); }
+
+@media (max-width: 560px) { body { font-size: 15px; } h1 { font-size: 1.15rem; } }
