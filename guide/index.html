@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide — Assumed Hostile</title>
+<meta name="description" content="The player's guide to Assumed Hostile: every key, page, symbol and alert on the console, the training lessons, and the first mission.">
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+  <div class="wrap guide">
+    <header>
+      <a class="mark" href="../">
+        <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <rect width="30" height="30" fill="#050d17"/>
+          <circle cx="15" cy="15" r="12.5" fill="none" stroke="#0d2a18" stroke-width="1"/>
+          <path d="M15 5.5 L24.5 15 L15 24.5 L5.5 15 Z" fill="none" stroke="#d8202f" stroke-width="2.4"/>
+          <circle cx="15" cy="15" r="1.8" fill="#ff8a90"/>
+          <rect x="16.5" y="14.3" width="6" height="1.4" fill="#145c2c"/>
+        </svg>
+        <span>
+          <span class="title">Assumed Hostile</span>
+          <span class="sub" style="display:block">Tactical naval command &amp; control</span>
+        </span>
+      </a>
+    </header>
+
+    <h1>Guide</h1>
+    <p class="asof" id="asof">Every key, page, symbol and alert on the console.</p>
+
+    <nav class="toc" aria-label="Sections">
+      <a href="#find">Find a control</a>
+      <a href="#console">The console</a>
+      <a href="#symbols">Symbols</a>
+      <a href="#lessons">Training</a>
+      <a href="#mission">Mission 1</a>
+      <a href="#alerts">Alerts</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#controls">Touch &amp; keyboard</a>
+      <a href="#menus">Menus &amp; scoring</a>
+    </nav>
+
+    <!-- ============================================================ find -->
+    <section id="find">
+      <h2>Find a control</h2>
+      <p>Type what you want to do, or a word you saw on screen.</p>
+      <div class="search">
+        <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="e.g. chaff, zoom, declare hostile, CPA" aria-label="Search the guide">
+      </div>
+      <ol id="results" class="results" aria-live="polite"></ol>
+    </section>
+
+    <!-- ============================================================ console -->
+    <section id="console">
+      <h2>The console</h2>
+      <p>This is a real screen from the first mission. <strong>Tap anything</strong> to see what it is.
+      The page tabs, <code>MORE</code> and <code>HELM</code> work as they do in the game.</p>
+      <div class="pagebar" role="tablist" aria-label="Console page" id="pagebar"></div>
+      <div class="explorer">
+        <div class="screen-wrap">
+          <div class="screen-scroll" id="scroller">
+            <div class="screen" id="screen">
+              <img id="shot" alt="" width="384" height="216">
+              <div id="spots"></div>
+            </div>
+          </div>
+          <p class="swipe">Swipe sideways to see the whole console.</p>
+          <label class="toggle"><input type="checkbox" id="showall"> Outline everything you can tap</label>
+        </div>
+        <aside class="detail" id="detail" aria-live="polite">
+          <p class="hint">Tap a key, a column heading, a figure or the plot.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================ symbols -->
+    <section id="symbols">
+      <h2>Symbols</h2>
+      <p><strong>Shape and colour</strong> show identity. <strong>Which part of the shape</strong> is
+      drawn shows whether it is in the air, on the surface or under the water. Drawn here from the game's own pixels.</p>
+      <div class="symgrid" id="symgrid"></div>
+
+      <h3>Try it</h3>
+      <div class="lab">
+        <canvas id="lab" width="80" height="56" aria-label="Symbol preview"></canvas>
+        <div class="labctl">
+          <fieldset><legend>Identity</legend><div id="lab-idn" class="chips"></div></fieldset>
+          <fieldset><legend>Category</legend><div id="lab-cat" class="chips"></div></fieldset>
+          <fieldset><legend>State</legend><div id="lab-state" class="chips"></div></fieldset>
+          <fieldset><legend>Heading</legend><input type="range" id="lab-hdg" min="0" max="345" step="15" value="315"> <span id="lab-hdg-v"></span></fieldset>
+          <p id="lab-say" class="labsay"></p>
+        </div>
+      </div>
+
+      <h3>Other marks</h3>
+      <div class="marks" id="marks"></div>
+      <h3>On the plot</h3>
+      <dl class="defs" id="elements"></dl>
+      <h3>Effects</h3>
+      <dl class="defs" id="effects"></dl>
+    </section>
+
+    <!-- ============================================================ lessons -->
+    <section id="lessons">
+      <h2>Training</h2>
+      <p>The five lessons under TRAINING on the main menu. The capitals are the game's own words;
+      each step you have to do says where the control is.</p>
+      <div id="lessonlist"></div>
+    </section>
+
+    <!-- ============================================================ mission -->
+    <section id="mission">
+      <h2>Mission 1</h2>
+      <div id="missionbody"></div>
+    </section>
+
+    <!-- ============================================================ alerts -->
+    <section id="alerts">
+      <h2>Alerts</h2>
+      <p>What appears on the alert strip, what it means, and what to do. Lower-case words stand for a
+      value: <code>brg</code> a bearing, <code>nnnn</code> a track number.</p>
+      <div class="chips" id="alertfilter" role="group" aria-label="Filter by level"></div>
+      <div id="alertlist" class="alertlist"></div>
+    </section>
+
+    <!-- ============================================================ glossary -->
+    <section id="glossary">
+      <h2>Glossary</h2>
+      <p>The game's own definitions, from REFERENCE → GLOSSARY, with a link to the full entry where there is one.</p>
+      <input id="gq" type="search" class="gsearch" placeholder="Filter terms" aria-label="Filter the glossary">
+      <dl class="gloss" id="glosslist"></dl>
+    </section>
+
+    <!-- ============================================================ controls -->
+    <section id="controls">
+      <h2>Touch &amp; keyboard</h2>
+      <div id="gestures"></div>
+      <h3>Keyboard</h3>
+      <table class="kbd"><tbody id="kbdlist"></tbody></table>
+    </section>
+
+    <!-- ============================================================ menus -->
+    <section id="menus">
+      <h2>Menus &amp; scoring</h2>
+      <div id="menubody"></div>
+    </section>
+
+    <nav class="nav">
+      <a href="../">Home</a>
+      <a href="../support/">Support</a>
+      <a href="../privacy/">Privacy policy</a>
+    </nav>
+    <footer>
+      <p id="built"></p>
+      <p>&copy; 2026 Flukanuck. Assumed Hostile is a work of fiction: the console (CMS&nbsp;41A) and
+      the ship (HMCS Burrard, FFH&nbsp;342) are invented. No real system, classified material or
+      photograph of a real console was used.</p>
+    </footer>
+  </div>
+  <script src="../contact.js"></script>
+  <script src="data.js"></script>
+  <script src="guide.js"></script>
+</body>
+</html>
